@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Oprah Likes You. And so do other people.</title>
+
+		<style>
+			
+			/* Basic CSS comment */	
+			body {
+				background: #021859;
+				color: white;
+				width: 960px;
+				margin: 0 auto;
+			}
+
+			h1 {
+				font-size: 80px;
+				color: white	;
+			}
+
+			h3 {
+				color:#F25CA2;
+			}
+
+			img {
+				display:block;
+				margin: 0 auto;
+			}
+
+		</style>
+
+
+
+
+	</head>
+ 	
+	<body>
+		<h1 id ="headline">Hello! Type in your name to be a car owner!</h1>
+		<img id="photoImg" src="https://storage.googleapis.com/afs-prod/media/media:d2870bd6a6214205a21bc5c148ef4e0b/800.jpeg">
+		<br>
+	</body>
+	<script>
+			//This is an event
+			var username = prompt("Hello, who are you?");
+			console.log(username);
+			var car = new Array("BMW", "Saab", "Maserati");
+			var carImage = new Array ("https://static.cargurus.com/images/site/2019/05/08/15/34/2020_bmw_4_series-pic-8338598254857983234-1600x1200.png","https://editorial.pxcrush.net/carsales/general/editorial/ge4943845938260125091.jpg?width=1024&height=683&aspect=pad","https://www.maserati.ca/mediaObject/sites/international/Models/MY19/classic/Maserati-Iniezione-storica_07_B/resolutions/res-870x582/Maserati-Iniezione-storica_07_B.jpg");
+			var quote = new Array("Congrats! You are so lucky!","You are the winner", "Did you just win a dream car?","Thanks Oprah for the car!");
+			var randomNumber = Math.floor(Math.random()*car.length);
+			var randomQuoteNumber = Math.floor(Math.random()*quote.length);
+			console.log(randomNumber);
+			var randomCarName = car[randomNumber];
+			var randomCarImage = carImage[randomNumber];
+			var randomQuote = quote[randomQuoteNumber];
+			var headline = document.getElementById('headline');
+			var photoImg = document.getElementById('photoImg');
+			
+
+
+			if (username === "Chris") {
+				headline.innerHTML="<h1>"+"Hello "+username+"! you won a "+randomCarName+"!</h1>";
+				photoImg.src=randomCarImage;
+				console.log(randomCarName);
+				console.log(randomCarImage);
+				document.write("<h3>"+randomQuote+"</h3>");
+
+			} else if (username === "Vicky"){
+				headline.innerHTML="<h1>"+"Hello "+username+"! you won a "+randomCarName+"!</h1>";
+				photoImg.src=randomCarImage;
+				console.log(randomCarName);
+				console.log(randomCarImage);
+				document.write("<h3>"+randomQuote+"</h3>");
+			} else if (username){
+				headline.innerHTML="<h1>"+"Hello "+username+"! Sorry you got no car unless you are Chris!</h1>";
+			} else if (username === ""){
+				headline.innerHTML="You Must Enter Your Name!";
+				setTimeout(function(){document.location.reload(true)}, 2000);
+			} else {
+				headline.innerHTML="Don't you want a car? Refresh your page now!"
+			}
+			
+		</script>
+
+</html>
