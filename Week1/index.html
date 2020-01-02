@@ -57,21 +57,21 @@
 			
 
 
-			if (username === "Chris") {
+			if (username === "Chewy" || "chewy") {
 				headline.innerHTML="<h1>"+"Hello "+username+"! you won a "+randomCarName+"!</h1>";
 				photoImg.src=randomCarImage;
 				console.log(randomCarName);
 				console.log(randomCarImage);
 				document.write("<h3>"+randomQuote+"</h3>");
 
-			} else if (username === "Vicky"){
+			} else if (username === "kak"){
 				headline.innerHTML="<h1>"+"Hello "+username+"! you won a "+randomCarName+"!</h1>";
 				photoImg.src=randomCarImage;
 				console.log(randomCarName);
 				console.log(randomCarImage);
 				document.write("<h3>"+randomQuote+"</h3>");
 			} else if (username){
-				headline.innerHTML="<h1>"+"Hello "+username+"! Sorry you got no car unless you are Chris!</h1>";
+				headline.innerHTML="<h1>"+"Hello "+username+"! Sorry you got no car unless you are Chewy!</h1>";
 			} else if (username === ""){
 				headline.innerHTML="You Must Enter Your Name!";
 				setTimeout(function(){document.location.reload(true)}, 2000);
