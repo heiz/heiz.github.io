@@ -1,5 +1,3 @@
-      var datarow=[];
-
       var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1y59MYoTH_Nq5nDgN_Lia56f7HaKCKAXHdV_nnsFHMWg/edit#gid=1599197251?usp=sharing';
 
       function init() {
@@ -14,14 +12,14 @@
         //alert('Successfully processed!')
         //console.log(data);
 
-       
+       var datarow = data.map(function(data){
+          var obj = {};
+          obj = [data.TopTag, Number(data.TopQuestionCount)];
+          console.log(obj);
+          return obj;
+       })
         
-        data.forEach(function(data){
-          //console.log(data.TopTag);
-          //console.log(data.TopQuestionCount);
-          datarow.push([data.TopTag, parseInt(data.TopQuestionCount)]);
-          
-        });
+        drawChart(datarow);
 
       }
 
@@ -39,15 +37,17 @@
       // instantiates the pie chart, passes in the data and
       // draws it.
 
-      function drawChart() {
+      function drawChart(datarow) {
          var x = [["javascript", 1928377], ["java", 1624004], ["c#", 1372312], ["php", 1325747], ["python", 1322595], ["android", 1243649],["jquery", 973813],["html", 960130],["c++", 649954],["css", 642712]];
       
         // Create the data table.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Language');
         data.addColumn('number', 'Questions Count');
-        data.addRows(x);
+        data.addRows(datarow);
+        console.log(typeof x);
         console.log(x);
+        console.log(typeof datarow);
         console.log(datarow);
 
         // Set chart options
