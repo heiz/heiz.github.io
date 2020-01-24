@@ -11,13 +11,13 @@
       function showInfo(data, tabletop) {
         //alert('Successfully processed!')
         //console.log(data);
-
+        console.log(data)
        var datarow = data.map(function(data){
-          var obj = {};
-          obj = [data.TopTag, Number(data.TopQuestionCount)];
-          console.log(obj);
-          return obj;
+          return [data.TopTag, Number(data.TopQuestionCount)];
        })
+
+      
+       console.log(datarow);
         
         drawChart(datarow);
 
@@ -45,10 +45,9 @@
         data.addColumn('string', 'Language');
         data.addColumn('number', 'Questions Count');
         data.addRows(datarow);
-        console.log(typeof x);
         console.log(x);
-        console.log(typeof datarow);
         console.log(datarow);
+
 
         // Set chart options
         var options = {'title':'Top 10 Popular Questions asked on StackOverFlow',
