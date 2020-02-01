@@ -95,18 +95,6 @@
       key.classList.add('playing');
     }
 
-  function runR(e) {
-    console.log(e);
-   const recordAudio = document.querySelector(`audio[data-key="${e}"]`);
-   if(!recordAudio) return; //stop the function from running all together
-      console.log(recordAudio.currentTime)
-      console.log(recordAudio.duration)
-      recordAudio.currentTime=0;
-      recordAudio.play();
-      if(recordAudio.currentTime === recordAudio.duration){
-        recordAudio.play();
-      } return;
-  }
 
   function removeTransition(e) {
     if(e.propertyName !== 'transform') return; //skip it if it's not a transform
@@ -129,7 +117,7 @@
 
   const playButton = document.querySelector("#play");
     playButton.addEventListener('click', function(e){ 
-    const secretSequence =["record", 67, 72, 69, 87, 89, 76, 79, 86, 69, 75, 65, 75];
+    const secretSequence =["record", 75, 73, 83, 83];
 
     if(keySequence.toString() === secretSequence.toString()){
       console.log("keySequence:"+keySequence.toString());
@@ -141,8 +129,24 @@
     } else {
       console.log("keySequence:"+keySequence.toString());
       console.log("secretSequence:"+secretSequence.toString());
-      keySequence.forEach(e => runR(e));
+      keySequence.forEach(function(){
+
+      for (var i=0; i<=keySequence.length; i++){
+        const recordAudio = document.querySelector(`audio[data-key='${keySequence[i]}']`);
+
+        if(recordAudio) {
+
+          setTimeout(function(){
+              recordAudio.play();
+              console.log(recordAudio);
+          },recordAudio.duration*1000)
+
+      } 
     }
+      
+  })
+
+  }
 
   });
 
