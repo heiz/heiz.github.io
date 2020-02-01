@@ -8,15 +8,16 @@ body,html {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+
 }
+
 
 .keys {
   display: flex;
-  flex: 1;
   flex-wrap:wrap;
-  min-height: 100vh;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
 }
 
 .key {
@@ -76,9 +77,19 @@ div {
 }
 
 #easterHeart {
-  margin-bottom: 5vh;
+  margin-top: 2vh;
+}
+
+#control-set {
+  margin: 2vh;
 }
 
 .hidden{
   display:none;
+}
+
+@media only screen and (max-width: 600px) {
+  .keys {
+    min-height: 90vh;
+  }
 }
