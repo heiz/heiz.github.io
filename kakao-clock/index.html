@@ -127,6 +127,19 @@
       font-size:small;
     }
 
+    .min-hand::before {
+      width: 6px;
+      height: 6px;
+      background:black;
+      border-radius: 50%;
+      display:block;
+      content:"";
+      top:0px;
+      right: 90px;
+      position:absolute;
+      z-index:-1;
+    }
+
     .min-hand::after {
       width: 6px;
       height: 6px;
@@ -189,6 +202,8 @@
     const secondHand = document.querySelector('.second-hand');
     const minHand = document.querySelector('.min-hand');
     const hourHand = document.querySelector('.hour-hand');
+    const allHands = document.querySelectorAll('.hand');
+
 
     function setDate(){
       const now = new Date();
@@ -204,7 +219,13 @@
       const hours = now.getHours();
       const hoursDegrees = ((hours/60)*360+90);
       hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
- 
+      
+      //Take off the transition when secondhand turn to 12 o'clock
+      if (secondsDegrees ===90){
+        allHands.forEach (hand => hand.style.transition = 'none');
+      } else {
+        allHands.forEach (hand => hand.style.transition ='');
+      }
       
     }
 
