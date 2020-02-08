@@ -4,6 +4,7 @@ html {
   font-family: 'helvetica neue';
   font-size: 20px;
   font-weight: 200;
+  text-align:center;
 }
 
 *, *:before, *:after {
@@ -16,7 +17,7 @@ input {
 }
 
 .search-form {
-  max-width: 400px;
+  max-width: 90%;
   margin: 50px auto;
 }
 
@@ -25,8 +26,8 @@ input.search {
   text-align: center;
   outline: 0;
   border: 10px solid #F7F7F7;
-  width: 120%;
-  left: -10%;
+  width: 110%;
+  left: -5%;
   position: relative;
   top: 10px;
   z-index: 2;
