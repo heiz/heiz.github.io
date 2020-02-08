@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Scratch It Out!</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+<style>
+	body {
+		background-color:#F21905;
+		font-family: 'helvetica neue';
+		font-size: 20px;
+		font-weight: 200;
+		text-align:center;
+	}
+
+	.wrap {
+	    display:flex;
+	    flex-direction: column;
+	}
+    
+ 	div.headline {
+		display: block;
+    	font-size: 1.5em;
+    	font-weight:bold;
+    	margin-block-start: 0.5em;
+    	margin-block-end: 0.01em;
+	}   
+
+
+	div.buttonbox {
+			order:1;
+			margin: 1%;
+			text-align:center;
+	}
+
+	button {
+		border: none;
+		color: white;
+	 	padding: 0.5em;
+		text-align: center;
+		text-decoration: none;
+		width:30%;
+		background-color: #f44336;
+		font-size: 1.5em;
+		outline: none;
+
+	}
+
+	div.canvasBox{
+		order:2;
+		display:inline-block;
+		background: url("https://images.unsplash.com/photo-1519016871193-d90e3a64d0f5");
+  		background-size: cover;
+  		background-color:white;
+	}
+
+
+	canvas {
+		background:transparent;
+	}
+
+
+	@media (max-width: 799px) {
+		div.headline {
+    	margin-block-start: 0.5em;
+    	margin-block-end: 0.5em;
+	}
+		div.canvasBox{
+			order: 1;
+
+		}
+		div.buttonbox {
+			width: 98%;
+	 		order: 2;
+		}
+		button {
+			width: 100%;
+		}
+	}
+	
+
+</style>
+<body>
+	<div class="wrap">
+		<div class="headline">Scratch It Out!</div>
+		<div class="buttonbox">
+			<button id="restartButton">restart</button>
+		</div>
+		<div class="canvasBox">
+			<canvas id="draw" width="800" height="800"></canvas>
+		</div>
+	</div>
+<script>
+	const restartButton = document.querySelector('#restartButton');
+	const canvas = document.querySelector('#draw');
+	const ctx = canvas.getContext('2d');
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+	ctx.fillStyle = "#F21905";
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+	ctx.lineWidth=50;
+	ctx.globalCompositeOperation = 'destination-out';
+
+
+	let isDrawing = false;
+	let lastX = 0;
+	let lastY = 0;
+
+	function draw(e){
+		if(!isDrawing) return; //stop the fn from running when they are not mousedown or touchstart
+
+		ctx.beginPath();
+		ctx.arc(lastX,lastY,20,0,Math.PI*2,false);
+		ctx.fill();
+
+    	ctx.moveTo(lastX,lastY);
+    	ctx.lineTo(lastX,lastY);
+    	ctx.stroke();
+
+		[lastX, lastY] = [e.offsetX, e.offsetY];
+		console.log(lastX, lastY)
+	};
+
+	function mdraw(e) {
+		if(!isDrawing) return; //stop the fn from running when they are not mousedown or touchstart
+		ctx.beginPath();
+		ctx.arc(lastX,lastY,20,0,Math.PI*2,false);
+		ctx.fill();
+
+    	ctx.moveTo(lastX,lastY);
+    	ctx.lineTo(lastX,lastY);
+    	ctx.stroke();
+
+		lastX= e.touches[0].clientX;
+		lastY = e.touches[0].clientY;
+	}
+
+
+	function clearCanvas(e) {
+		ctx.beginPath();
+		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+	};
+
+	restartButton.addEventListener('click',clearCanvas);
+	restartButton.addEventListener('touchstart',clearCanvas);
+
+	canvas.addEventListener('mousedown', (e) => {
+		isDrawing = true;
+		[lastX, lastY] = [e.offsetX, e.offsetY];
+	});
+	canvas.addEventListener('mousemove', draw);
+	canvas.addEventListener('mouseup', () => isDrawing = false);
+	canvas.addEventListener('mouseout', () => isDrawing = false);
+
+
+
+	canvas.addEventListener('touchstart', (e) => {
+		e.preventDefault();
+		isDrawing = true
+		lastX= e.touches[0].clientX;
+		lastY = e.touches[0].clientY;
+	});
+	canvas.addEventListener('touchmove', mdraw);
+	canvas.addEventListener('touchend', () => isDrawing = false);
+	canvas.addEventListener('touchcancel', () => isDrawing = false);
+
+
+</script>
+
+<style>
+  html, body {
+    margin: 0;
+  }
+</style>
+
+</body>
+</html>
