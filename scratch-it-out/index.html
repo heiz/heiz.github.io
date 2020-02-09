@@ -16,7 +16,7 @@
 
 	.wrap {
 	    display:flex;
-	    flex-direction: column;
+	    flex-wrap:wrap;
 	}
     
  	div.headline {
@@ -25,6 +25,7 @@
     	font-weight:bold;
     	margin-block-start: 0.5em;
     	margin-block-end: 0.01em;
+    	flex-grow:2;
 	}   
 
 
@@ -32,6 +33,7 @@
 			order:1;
 			margin: 1%;
 			text-align:center;
+			flex-grow:1;
 	}
 
 	button {
