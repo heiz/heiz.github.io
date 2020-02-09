@@ -53,13 +53,15 @@
 		background: url("https://source.unsplash.com/random/800x600");
   		background-size: cover;
   		background-repeat:no-repeat;
-  		background-color: #FFCA40;
-  		overflow-y: hidden;
+  		background-color: #F21905;
+		background-size:100% 100%;
+
 	}
 
 
 	canvas {
 		background:transparent;
+
 	}
 
 
@@ -95,6 +97,7 @@
 	</div>
 <script>
 	const restartButton = document.querySelector('#restartButton');
+	const canvasBox = document.querySelector('.canvasBox');
 	const canvas = document.querySelector('#draw');
 	const ctx = canvas.getContext('2d');
 	canvas.width = window.innerWidth;
@@ -102,8 +105,19 @@
 	ctx.fillStyle = "#F21905";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+
+	canvasBox.style.width = canvas.width+"px";
+	console.log(canvasBox.style.width);
+	console.log(canvas.width);
+	console.log(canvasBox.style.width);
+	canvasBox.style.height = canvas.height+"px";
+
+
+	ctx.linecap ="round";
+	ctx.line ="round";
 	ctx.lineWidth=50;
 	ctx.globalCompositeOperation = 'destination-out';
+
 
 
 	let isDrawing = false;
@@ -114,6 +128,7 @@
 		if(!isDrawing) return; //stop the fn from running when they are not mousedown or touchstart
 
 		ctx.beginPath();
+		ctx.globalCompositeOperation = 'destination-out';
 		ctx.arc(lastX,lastY,20,0,Math.PI*2,false);
 		ctx.fill();
 
@@ -128,6 +143,7 @@
 	function mdraw(e) {
 		if(!isDrawing) return; //stop the fn from running when they are not mousedown or touchstart
 		ctx.beginPath();
+		ctx.globalCompositeOperation = 'destination-out';
 		ctx.arc(lastX,lastY,20,0,Math.PI*2,false);
 		ctx.fill();
 
@@ -139,16 +155,6 @@
 		lastY = e.touches[0].clientY;
 	}
 
-
-	function clearCanvas(e) {
-		ctx.beginPath();
-		ctx.fillStyle = "#F21905";
-		ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-		console.log(ctx.canvas.width,ctx.canvas.height);
-	};
-
-	restartButton.addEventListener('click',clearCanvas);
-	restartButton.addEventListener('touchstart',clearCanvas);
 
 	canvas.addEventListener('mousedown', (e) => {
 		isDrawing = true;
@@ -170,6 +176,15 @@
 	canvas.addEventListener('touchend', () => isDrawing = false);
 	canvas.addEventListener('touchcancel', () => isDrawing = false);
 
+	function restartCanvas(e) {
+		ctx.globalCompositeOperation = 'destination-over';
+		ctx.fillStyle = "#F21905";
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+		canvasBox.style.backgroundImage = "url('https://source.unsplash.com/random/800x600sig=123')";
+	};
+
+	restartButton.addEventListener('click',restartCanvas);
+	restartButton.addEventListener('touchstart',restartCanvas);
 
 </script>
 
