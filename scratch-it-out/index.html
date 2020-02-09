@@ -54,7 +54,6 @@
   		background-size: cover;
   		background-repeat:no-repeat;
   		background-color: #F21905;
-		background-size:100% 100%;
 
 	}
 
@@ -107,9 +106,6 @@
 
 
 	canvasBox.style.width = canvas.width+"px";
-	console.log(canvasBox.style.width);
-	console.log(canvas.width);
-	console.log(canvasBox.style.width);
 	canvasBox.style.height = canvas.height+"px";
 
 
@@ -180,7 +176,7 @@
 		ctx.globalCompositeOperation = 'destination-over';
 		ctx.fillStyle = "#F21905";
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
-		canvasBox.style.backgroundImage = "url('https://source.unsplash.com/random/800x600sig=123')";
+		canvasBox.style.backgroundImage = "url('https://source.unsplash.com/random/800x600sig="+ Math.random()+"')";
 	};
 
 	restartButton.addEventListener('click',restartCanvas);
