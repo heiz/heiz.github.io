@@ -5,7 +5,7 @@ html {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   text-align: center;
   font-family: Futura,"Trebuchet MS",Arial,sans-serif;
 }
@@ -80,6 +80,10 @@ h2 {
   content: '🐓';
 }
 
+.plates input[data-icon="beef"]:checked + label:before {
+  content: '🐄';
+}
+
 .plates input[data-icon="burger"]:checked + label:before {
   content: '🍔';
 }
@@ -89,7 +93,19 @@ h2 {
 }
 
 .plates input[data-icon="chewy"]:checked + label:before {
-  content: '😍';
+  content: '🦁';
+}
+
+.plates input[data-icon="kak"]:checked + label:before {
+  content: '🐍';
+}
+
+.plates input[data-icon="cheese"]:checked + label:before {
+  content: '🧀';
+}
+
+.plates input[data-icon="banana"]:checked + label:before {
+  content: '🍌';
 }
 
 .add-items {

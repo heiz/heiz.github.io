@@ -32,7 +32,7 @@
   const resetButton = document.querySelector('.add-items input[value=reset]');
   const itemsList = document.querySelector('.plates');
   const items = JSON.parse(localStorage.getItem('items')) || [] ;
-  const foodIcon = ['fish','pork','chicken','beer','chewy','burger']
+  const foodIcon = ['fish','pork','chicken','beer','chewy','burger','kak','beef','cheese','banana']
 
 
   function addItem(e){
@@ -44,7 +44,9 @@
       icon: "",
       done: false
     }
-    foodIcon.map(icon => {text.toLowerCase().search(icon)? "" : item.icon=icon})
+    foodIcon.map(icon => {
+      
+      text.toLowerCase().search(icon)>=0? item.icon=icon : ""})
 
     items.push(item);
     populateList(items,itemsList)
