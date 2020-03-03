@@ -3,232 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>JS + CSS Clock</title>
+  <title>Scoped CSS Variables and JS</title>
 </head>
 <body>
-    <div class="clock">
-      <div class="clock-face">
-        <div class="clock-center"></div>
-        <div class="hand hour-hand">
-          <span>hour</span>
-        </div>
-        <div class="hand min-hand">
-          <span>min</span>
-        </div>
-        <div class="hand second-hand">
-          <span>second</span>
-        </div>
-      </div>
+  <h3>Update CSS Variables with <span class='hl'>JS</span></h3>
+
+  <div class="controls">
+    <div class="control">
+      <label for="spacing">Spacing:</label>
+      <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
     </div>
 
-
+    <div class="control">
+      <label for="blur">Blur:</label>
+      <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+    </div>
+    <div class="control">
+      <label for="base">Base Color</label>
+      <input id="base" type="color" name="base" value="#ffc600">
+    </div>
+  </div>
+    <div class="img-box">
+    <img src="https://p0.pikrepo.com/preview/817/803/white-and-red-road-bike-near-yellow-fence.jpg">
+  </div>
   <style>
-    html {
-      font-family: 'helvetica neue';
-      text-align: center;
-      font-size: 10px;
+    /*CSS variable*/
+    :root {
+      --base: #ffc600;
+      --spacing: 10px;
+      --blur: 10px;
     }
+
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+      width:90%;
+    }
+
+    .hl {
+      color: var(--base);
+    }
+
+    /*
+
+    misc styles, nothing to do with css variables
+
+    */
 
     body {
-      margin: 0;
-      font-size: 2rem;
-      height:100%;
-      min-height: 100vh;
-      overflow-y:hidden;
-      align-items: center;
-      background-image: url(images/1200.jpg);
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-position: bottom center;
-      background-size: cover;
-      background-color: black;
+      text-align: center;
+      background: #193549;
+      color: white;
+      font-family: 'helvetica neue', sans-serif;
+      font-weight: 100;
+      font-size: 50px;
     }
 
-    .clock {
-      width: 20rem;
-      height: 20rem;
-      border: 10px solid black;
-      border-radius: 50%;
-      margin: 50px auto;
-      position: relative;
-      padding: 2rem;
-      box-shadow:
-        0 0 0 4px rgba(0,0,0,0.1),
-        inset 0 0 0 3px #EFEFEF,
-        inset 0 0 10px black,
-        0 0 10px rgba(0,0,0,0.2);
+    .controls {
+      margin-bottom: 50px;
+      font-size:0.5em;
+      display: flex;
+      flex-wrap:wrap;
+      justify-content: center;
     }
 
-    .clock-center {
-      width: 20px;
-      height: 20px;
-      background:black;
-      border-radius: 50%;
-      position: relative;
-      left:45%;
-      top:47%;
-}
-
-    .clock-face {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transform: translateY(-3px); /* account for the height of the clock hands */
+    .control {
+      margin:20px;
     }
 
-    .hand {
-      width: 50%;
-      height: 6px;
-      background: black;
-      position: absolute;
-      top: 50%;
-      transform-origin:100%;
-      transform:rotate(90deg);
-      transition: all 0.05s;
-      transition-timing-function: cubic-bezier(0, 5.01, 0.58, 1);
+    input {
+      width: 100px;
+    }
+
+    @media only screen and (max-width: 768px) {
+
+      h3 {
+        font-size:1em;
+        margin-block-start: 0.5em;
+        margin-block-end: 0.5em;
       }
-
-    .hour-hand {
-      width:30%;
-      left:20%;
-      height:20px;
-      color:white;
-      text-align:right;
-      top:47%;
-      font-size:medium;
     }
-
-    .hour-hand::after {
-      width: 20px;
-      height: 20px;
-      background:black;
-      border-radius: 50%;
-      display:block;
-      content:"";
-      top:0px;
-      right:50px;
-      position:absolute;
-      z-index:-1;
-    }
-
-    .hour-hand span {
-      display:block;
-      transform: rotate(180deg);
-      padding-right: 5px;
-      line-height:20px;
-    }
-
-
-    .min-hand {
-      width:40%;
-      left:10%;
-      font-size:small;
-    }
-
-    .min-hand::before {
-      width: 6px;
-      height: 6px;
-      background:black;
-      border-radius: 50%;
-      display:block;
-      content:"";
-      top:0px;
-      right: 90px;
-      position:absolute;
-      z-index:-1;
-    }
-
-    .min-hand::after {
-      width: 6px;
-      height: 6px;
-      background:black;
-      border-radius: 50%;
-      display:block;
-      content:"";
-      top:0px;
-      right:77px;
-      position:absolute;
-      z-index:-1;
-    }
-    
-
-    .min-hand span {
-      display:block;
-      transform: rotate(180deg);
-      padding-right: 5px;
-      line-height:30px;
-    }
-
-    .second-hand {
-      text-align:right;
-      padding-right:5px;
-      width:48%;
-      font-size:x-small;
-    }
-
-    .second-hand::after {
-      width: 6px;
-      height: 6px;
-      background:black;
-      border-radius: 50%;
-      display:block;
-      content:"";
-      top:0px;
-      right:99px;
-      position:absolute;
-      z-index:-1;
-    }
-
-    .second-hand span {
-      display:block;
-      transform: rotate(180deg);
-      line-height:30px;
-    }
-
-
-@media only screen and (max-width: 750px) {
-  body {
-
-    background-image: url(images/720.jpg);
-
-    }
-
   </style>
 
   <script>
 
-    const secondHand = document.querySelector('.second-hand');
-    const minHand = document.querySelector('.min-hand');
-    const hourHand = document.querySelector('.hour-hand');
-    const allHands = document.querySelectorAll('.hand');
+    const inputs = document.querySelectorAll('.controls input');
 
+    function handleUpdate() {
+      const suffix = this.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${this.name}`,this.value+suffix)
 
-    function setDate(){
-      const now = new Date();
-
-      const seconds = now.getSeconds();
-      const secondsDegrees = ((seconds/60)*360+90);
-      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
-
-      const mins = now.getMinutes();
-      const minsDegrees = ((mins/60)*360+90);
-      minHand.style.transform = `rotate(${minsDegrees}deg)`;
-
-      const hours = now.getHours();
-      const hoursDegrees = ((hours/60)*360+90);
-      hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
-      
-      //Take off the transition when secondhand turn to 12 o'clock
-      if (secondsDegrees ===90){
-        allHands.forEach (hand => hand.style.transition = 'none');
-      } else {
-        allHands.forEach (hand => hand.style.transition ='');
-      }
-      
     }
 
-    setInterval(setDate,1000);
+    inputs.forEach(input => input.addEventListener('change', handleUpdate))
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
 
-    </script>
-  </body>
+  </script>
+
+</body>
 </html>

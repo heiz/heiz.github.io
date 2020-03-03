@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Mouse Shadow</title>
+</head>
+<body>
+
+  <div class="hero">
+    <h1 id="randomColor" contenteditable>🦄WOAH!</h1>
+  </div>
+
+  <style>
+  html {
+    color: black;
+    font-family: sans-serif;
+  }
+
+  body {
+    margin: 0;
+    background-color:#FFEE6D;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+  }
+
+  h1 {
+    text-shadow: 10px 10px 0 rgba(0,0,0,1);
+    font-size: 100px;
+  }
+
+  .hoverClass0:hover {
+    color:#B2296F;
+  }
+
+  .hoverClass1:hover {
+    color:#FF54AB;
+  }
+
+  .hoverClass2:hover {
+    color:#2FBACC;
+  }
+
+  .hoverClass3:hover {
+    color:#32A3B2;
+  }
+
+  .hoverClass4:hover {
+    color:#FFFFFF;
+  }  
+  </style>
+
+<script>
+  const hero = document.querySelector('.hero');
+  const text = document.querySelector('h1');
+  const walk = 200; //px offset
+
+  function shadow(e){
+    console.log(e)
+      const {offsetWidth:width, offsetHeight:height} = hero;
+
+      let {offsetX: x, offsetY: y} = e;
+
+      if(this !== e.target) {
+        console.log(e.target.offsetLeft,e.target.offsetTop)
+        x = x + e.target.offsetLeft;
+        y = y + e.target.offsetTop;
+      }
+
+      const xWalk = Math.round((x / width * walk) - (walk / 2));
+      const yWalk = Math.round((y / height * walk) - (walk / 2));
+
+      text.style.textShadow = `
+        ${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7),
+        ${xWalk * -1}px ${yWalk}px 0 rgba(0,255,255,0.7),
+        ${yWalk}px ${xWalk * -1}px 0 rgba(0,255,0,0.7),
+        ${yWalk * -1}px ${xWalk}px 0 rgba(0,0,255,0.7)
+      `;
+  }
+
+  hero.addEventListener('mousemove',shadow)
+  hero.addEventListener('touchmove',shadow)
+
+  //hover h1 random color
+  const randomColor=document.getElementById('randomColor');
+  
+  
+  function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+
+randomColor.addEventListener('mouseenter',function() {randomColor.setAttribute("class", 'hoverClass'+getRndInteger(0, 5));
+})
+randomColor.addEventListener('mouseleave',function() {randomColor.setAttribute("class", "")})
+
+
+
+
+</script>
+</body>
+</html>
