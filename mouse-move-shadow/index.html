@@ -11,16 +11,34 @@
     <h1 id="randomColor" contenteditable>🦄WOAH!</h1>
   </div>
 
+  <div class="control">
+      <label for="bgColor">Background Color: </label>
+      <input id="bgColor" type="color" name="bgColor" value="#ffc600">
+      <label for="textColor">Text Color: </label>
+      <input id="textColor" type="color" name="textColor" value="#600ffc">
+      <label for="fontSize">Font Size: </label>
+      <input id="fontSize" type="range" name="fontSize" min="1" max="7" value="3" data-sizing="em">
+    </div>
+  </div>
+
   <style>
+  /*CSS variable*/
+  :root {
+      --darkbgColor: #111E6C;
+      --lightbgColor: #FFEE6D;
+      --darktextColor: #FFFFFF;
+      --lighttextColor: #000000;
+      --fontSize: 6em;
+  }
+
   html {
-    color: black;
     font-family: sans-serif;
   }
 
   body {
     margin: 0;
-    background-color:#FFEE6D;
-    font-size: 15px;
+    background-color: #ffc600;
+    font-size: 20px;
   }
 
   .hero {
@@ -31,9 +49,27 @@
     
   }
 
+  .control {
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+  }
+
+  input {
+    width: 100px;
+    margin-left: 10px;
+  }
+  label {
+    margin-left: 10px;
+  }
+
   h1 {
     text-shadow: 10px 10px 0 rgba(0,0,0,1);
-    font-size: 6em;
+    font-size: var(--fontSize);
+    font-color: var(--textColor);
   }
 
   .hoverClass0:hover {
@@ -58,21 +94,44 @@
 
   @media (prefers-color-scheme: dark) {
 
-  body { background: #111E6C; color:white;}
+  body { background: var(--darkbgColor); color: var(--darktextColor);}
 }
 
   @media (prefers-color-scheme: light) {
-  body { background: #FFEE6D; color:black;}
+  body { background: var(--lightbgColor); color:var(--lighttextColor);}
 }
 
   @media only screen and (max-width: 580px) {
-  h1 { font-size: 5em}
+  h1 { 
+    font-size: var(--fontSize);
+  }
+  .control {
+    font-size: 0.5em;
+  }
 }
   </style>
 
 <script>
+
+  //function to grab value by query parameter
+  function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)','gi');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  };
+
+  //set body font size && h1 text
+  const textParam = getUrlParameter('text');
+  const fontSizeParam = getUrlParameter('font-size');
   const hero = document.querySelector('.hero');
   const text = document.querySelector('h1');
+  console.log(textParam);
+  if(textParam) {text.innerHTML = textParam;}
+  if(fontSizeParam) {document.body.style.fontSize = fontSizeParam+'px'}
+  
+
+  //shadow effect
   const walk = 200; //px offset
 
   function mouseShadow(e){
@@ -128,15 +187,40 @@
 
   //hover h1 random color
   const randomColor=document.getElementById('randomColor');
-  
-  
-  function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (max - min) ) + min;
-}
+  function getRndInteger(min, max) {return Math.floor(Math.random() * (max - min) ) + min}
 
-randomColor.addEventListener('pointerenter',function() {randomColor.setAttribute("class", 'hoverClass'+getRndInteger(0, 5));
-})
-randomColor.addEventListener('pointerleave',function() {randomColor.setAttribute("class", "")})
+  randomColor.addEventListener('pointerenter',function() {randomColor.setAttribute("class", 'hoverClass'+getRndInteger(0, 5))})
+  randomColor.addEventListener('pointerleave',function() {randomColor.setAttribute("class", "")})
+
+  //set input value to body background color && text color
+  const inputs = document.querySelectorAll('.control input');
+  let isPress = false;
+  function handleUpdate() {
+    if(!isPress) return //stop the fn from running when they are not mousedown or touchstart
+
+      const suffix = this.dataset.sizing || '';
+      if (this.name === 'bgColor') {
+        document.documentElement.style.setProperty(`--light${this.name}`,this.value+suffix, 'important')
+        document.documentElement.style.setProperty(`--dark${this.name}`,this.value+suffix, 'important')
+      } else if (this.name === 'textColor') {
+        document.documentElement.style.setProperty(`--light${this.name}`,this.value+suffix, 'important')
+        document.documentElement.style.setProperty(`--dark${this.name}`,this.value+suffix, 'important') 
+      } else {
+        document.documentElement.style.setProperty(`--${this.name}`,this.value+suffix, 'important')
+      }
+      
+    }
+
+  inputs.forEach(input => input.addEventListener('change', handleUpdate))
+  inputs.forEach(input => input.addEventListener('mousedown', () => isPress = true ))
+  inputs.forEach(input => input.addEventListener('mouseup', () => isPress = false ))
+  inputs.forEach(input => input.addEventListener('mouseout', () => isPress = false ))
+  inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
+
+  inputs.forEach(input => input.addEventListener('touchstart', () => isPress = true))
+  inputs.forEach(input => input.addEventListener('touchmove', handleUpdate))
+  inputs.forEach(input => input.addEventListener('touchend', () => isPress = false))
+  inputs.forEach(input => input.addEventListener('touchcancel', () => isPress = false))
 
 
 
