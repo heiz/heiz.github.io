@@ -28,7 +28,7 @@
       --lightbgColor: #FFEE6D;
       --darktextColor: #FFFFFF;
       --lighttextColor: #000000;
-      --fontSize: 6em;
+      --fontSize: 3em;
   }
 
   html {
@@ -39,6 +39,8 @@
     margin: 0;
     background-color: #ffc600;
     font-size: 20px;
+    max-height: 100vh;
+    color: #FFFFFF;
   }
 
   .hero {
@@ -94,11 +96,22 @@
 
   @media (prefers-color-scheme: dark) {
 
-  body { background: var(--darkbgColor); color: var(--darktextColor);}
+  body {
+    background: var(--darkbgColor);
+  }
+  h1 {
+    color: var(--darktextColor);
+  }
 }
 
   @media (prefers-color-scheme: light) {
-  body { background: var(--lightbgColor); color:var(--lighttextColor);}
+  body {
+    background: var(--lightbgColor);
+  }
+
+  h1 {
+    color:var(--lighttextColor);
+  }
 }
 
   @media only screen and (max-width: 580px) {
@@ -196,7 +209,8 @@
   const inputs = document.querySelectorAll('.control input');
   let isPress = false;
   function handleUpdate() {
-    if(!isPress) return //stop the fn from running when they are not mousedown or touchstart
+    if(!isPress && this.name !== 'bgColor') return //stop the fn from running when they are not mousedown or touchstart 
+    if(!isPress && this.name !== 'textColor') return //stop the fn from running when they are not mousedown or touchstart 
 
       const suffix = this.dataset.sizing || '';
       if (this.name === 'bgColor') {
