@@ -7,19 +7,30 @@
 </head>
 <body>
 
-  <div class="hero">
-    <h1 id="randomColor" contenteditable>🦄WOAH!</h1>
+  <div class="wrap">
+
+    <div class="controls">
+        <div class="control">
+          <label for="bgColor">Background Color: </label>
+          <input id="bgColor" type="color" name="bgColor" value="#ffc600">
+        </div>
+        <div class="control">
+          <label for="textColor">Text Color: </label>
+          <input id="textColor" type="color" name="textColor" value="#600ffc">
+        </div>
+        <div class="control">
+          <label for="fontSize">Font Size: </label>
+          <input id="fontSize" type="range" name="fontSize" min="1" max="7" value="3" data-sizing="em">
+        </div>
+    </div>
+
+    <div class="hero">
+      <h1 id="randomColor" contenteditable>🦄WOAH!</h1>
+    </div>
+
   </div>
 
-  <div class="control">
-      <label for="bgColor">Background Color: </label>
-      <input id="bgColor" type="color" name="bgColor" value="#ffc600">
-      <label for="textColor">Text Color: </label>
-      <input id="textColor" type="color" name="textColor" value="#600ffc">
-      <label for="fontSize">Font Size: </label>
-      <input id="fontSize" type="range" name="fontSize" min="1" max="7" value="3" data-sizing="em">
-    </div>
-  </div>
+
 
   <style>
   /*CSS variable*/
@@ -33,31 +44,41 @@
 
   html {
     font-family: sans-serif;
+    margin: 0;
   }
 
   body {
     margin: 0;
     background-color: #ffc600;
     font-size: 20px;
-    max-height: 100vh;
     color: #FFFFFF;
   }
 
+  .wrap {
+    display:flex;
+    flex-direction:column;
+  }
+
   .hero {
-    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    order:1;
+    min-height:70vh;
     
   }
 
-  .control {
-    margin-bottom: 10px;
+  .controls {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     font-size: 1em;
+    min-height:10vh;
+  }
+
+  .control{
+    flex-grow: 1;
   }
 
   input {
@@ -102,6 +123,8 @@
   h1 {
     color: var(--darktextColor);
   }
+
+
 }
 
   @media (prefers-color-scheme: light) {
@@ -118,8 +141,9 @@
   h1 { 
     font-size: var(--fontSize);
   }
-  .control {
+  .controls {
     font-size: 0.5em;
+    order:2;
   }
 }
   </style>
@@ -171,7 +195,7 @@
   }
 
   function touchShadow(e){
-    //e.preventDefault();
+    e.preventDefault();
     console.log(e);
 
       const {offsetWidth:width, offsetHeight:height} = hero;
