@@ -24,7 +24,7 @@
         </div>
         <div class="control">
           <label for="fontSize">Font Size: </label>
-          <input id="fontSize" type="range" name="fontSize" min="1" max="7" value="3" data-sizing="em">
+          <input id="fontSize" type="range" name="fontSize" min="1" max="7" value="4" data-sizing="em">
         </div>
     </div>
 
@@ -63,7 +63,7 @@
     display: flex;
     justify-content: center;
     align-items: center;;
-    min-height:80vh;
+    min-height:90vh;
     
   }
 
@@ -142,8 +142,12 @@
   }
   .controls {
     font-size: 0.5em;
+    order:1;
   }
-
+  .hero {
+    min-height: 80vh;
+    order:2;
+  }
 }
   </style>
 
