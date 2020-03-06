@@ -233,10 +233,19 @@
 
   //set input value to body background color && text color
   const inputs = document.querySelectorAll('.control input');
+  const inputColor = document.querySelectorAll(".control input[type='color']");
+  const inputText = document.querySelectorAll(".control input[type='range']");
+
   let isPress = false;
   function handleUpdate() {
-    if(!isPress && this.name !== 'bgColor') return //stop the fn from running when they are not mousedown or touchstart 
-    if(!isPress && this.name !== 'textColor') return //stop the fn from running when they are not mousedown or touchstart 
+  console.log('start handleUpdate')
+  console.log(isPress);
+  console.log(this.name);
+    if(!isPress && this.name !== 'bgColor') {
+      return 
+    } else if(!isPress && this.name !== 'textColor') {
+      return
+    } 
 
       const suffix = this.dataset.sizing || '';
       if (this.name === 'bgColor') {
@@ -251,16 +260,19 @@
       
     }
 
+  inputs.forEach(input => input.addEventListener('change', () => isPress = true))
   inputs.forEach(input => input.addEventListener('change', handleUpdate))
+
   inputs.forEach(input => input.addEventListener('mousedown', () => isPress = true ))
   inputs.forEach(input => input.addEventListener('mouseup', () => isPress = false ))
   inputs.forEach(input => input.addEventListener('mouseout', () => isPress = false ))
+  inputs.forEach(input => input.addEventListener('mousemove', () => isPress = false))
   inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
 
   inputs.forEach(input => input.addEventListener('touchstart', () => isPress = true))
   inputs.forEach(input => input.addEventListener('touchmove', handleUpdate))
-  inputs.forEach(input => input.addEventListener('touchend', () => isPress = false))
-  inputs.forEach(input => input.addEventListener('touchcancel', () => isPress = false))
+  inputText.forEach(input => input.addEventListener('touchend', () => isPress = false))
+  inputText.forEach(input => input.addEventListener('touchcancel', () => isPress = false))
 
 
 
