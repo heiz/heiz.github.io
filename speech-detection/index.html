@@ -20,7 +20,7 @@
   words.appendChild(p);
 
   recognition.addEventListener('result', e => {
-
+    console.log(e.results[0]);
     const transcript = Array.from(e.results)
       .map(result => result[0])
       .map(result => result.transcript)
@@ -35,13 +35,29 @@
         
       }
 
+      if(transcript.includes('unicorn')){
+        
+        words.lastChild.innerHTML+="🦄";
+        
+      }
+
+      if(transcript.includes('kak')){
+        
+        words.lastChild.innerHTML+="🐍";
+        
+      }
+
+
+      if(transcript.includes('get weather forecast')){
+        
+        console.log('connect weather API and return result')
+        
+      }
+
       if(e.results[0].isFinal){
         p = document.createElement('p');
         words.appendChild(p);
       }
-
-
-
 
     console.log(transcript);
 
