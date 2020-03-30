@@ -137,7 +137,7 @@ a.button {
 
 @media all and (max-width:500px) {
   .app-wrap {
-    height:95vh;
+    height:90vh;
     margin:0px;
     border:0px;
     border-bottom-width: 0px;
