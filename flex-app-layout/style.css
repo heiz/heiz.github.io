@@ -1,9 +1,13 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
 html {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 *, *:before, *:after {
-  box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
 }
 
 html {
@@ -15,7 +19,7 @@ body {
   margin: 0;
   font-size: 15px;
   font-size: 1.5rem;
-  background-image: -webkit-linear-gradient(190deg, #484C7F 0%, #FF6361 100%);
+  background-image: -o-linear-gradient(190deg, #484C7F 0%, #FF6361 100%);
   background-image: linear-gradient(260deg, #484C7F 0%, #FF6361 100%); 
 }
 
@@ -39,7 +43,8 @@ a.button {
   border:20px solid rgba(0,0,0,0.8);
   border-bottom-width: 70px;
   border-radius:10px;
-  box-shadow:0 0 50px  rgba(0,0,0,0.3);
+  -webkit-box-shadow:0 0 50px  rgba(0,0,0,0.3);
+          box-shadow:0 0 50px  rgba(0,0,0,0.3);
 
   display:-webkit-box;
 
@@ -62,7 +67,8 @@ a.button {
 .content {
   padding:20px;
   background:white;
-  box-shadow:inset 0 5px 0 rgba(0,0,0,0.1);
+  -webkit-box-shadow:inset 0 5px 0 rgba(0,0,0,0.1);
+          box-shadow:inset 0 5px 0 rgba(0,0,0,0.1);
   line-height: 1.6;
   overflow-y:scroll;
 }
@@ -75,10 +81,11 @@ a.button {
 
 
 .icon-bar a {
-  -webkit-box-flex:1 1 25%;
+  -webkit-box-flex:1;
       -ms-flex:1 1 25%;
           flex:1 1 25%;
   text-align: center;
+  align-self: start;
   padding: 15px;
   padding:1.5rem;
   border-left:1px solid rgba(0,0,0,0.1);
@@ -116,11 +123,8 @@ a.button {
   color:rgba(0,0,0,0.5);
   padding: 10px;
   padding:1rem;
-
   display:-webkit-box;
-
   display:-ms-flexbox;
-
   display:flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -133,8 +137,7 @@ a.button {
 
 @media all and (max-width:500px) {
   .app-wrap {
-    max-width:540px;
-    height:90vh;
+    height:95vh;
     margin:0px;
     border:0px;
     border-bottom-width: 0px;
