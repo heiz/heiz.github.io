@@ -75,9 +75,9 @@ a.button {
 
 
 .icon-bar a {
-  -webkit-box-flex:1;
-      -ms-flex:1;
-          flex:1;
+  -webkit-box-flex:1 1 25%;
+      -ms-flex:1 1 25%;
+          flex:1 1 25%;
   text-align: center;
   padding: 15px;
   padding:1.5rem;
@@ -96,11 +96,8 @@ a.button {
 
 .icon-bar {
   border-top:1px solid #E2ECF2;
-
   display:-webkit-box;
-
   display:-ms-flexbox;
-
   display:flex;
 }
 
@@ -137,7 +134,7 @@ a.button {
 @media all and (max-width:500px) {
   .app-wrap {
     max-width:540px;
-    height: 80vh;
+    height:90vh;
     margin:0px;
     border:0px;
     border-bottom-width: 0px;
