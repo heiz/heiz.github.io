@@ -31,7 +31,7 @@ a {
 a.button {
   background:rgba(0,0,0,0.1);
   padding: 10px 15px;
-  padding:1rem 1.5rem;
+  padding: 1rem 1.5rem;
   border-radius:4px;
 }
 
@@ -40,16 +40,14 @@ a.button {
   max-width:540px;
   height: 90vh;
   margin: 5vh auto 5vh auto;
-  border:20px solid rgba(0,0,0,0.8);
+  border: 20px solid rgba(0,0,0,0.8);
   border-bottom-width: 70px;
   border-radius:10px;
   -webkit-box-shadow:0 0 50px  rgba(0,0,0,0.3);
           box-shadow:0 0 50px  rgba(0,0,0,0.3);
 
   display:-webkit-box;
-
   display:-ms-flexbox;
-
   display:flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -137,7 +135,8 @@ a.button {
 
 @media all and (max-width:500px) {
   .app-wrap {
-    height:80vh;
+    height:100vh;
+    height: calc(var(--vh, 1vh) * 100);
     margin:0px;
     border:0px;
     border-bottom-width: 0px;
