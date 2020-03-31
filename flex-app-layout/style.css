@@ -135,7 +135,9 @@ a.button {
 
 @media all and (max-width:500px) {
   .app-wrap {
+    min-height: -webkit-fill-available;
     height: var(--vh);
+    width: var(--vw);
     margin:0px;
     border:0px;
     border-bottom-width: 0px;
