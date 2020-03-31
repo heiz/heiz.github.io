@@ -37,7 +37,7 @@ a.button {
 
 
 .app-wrap {
-  max-width:540px;
+  max-width:500px;
   height: 90vh;
   margin: 5vh auto 5vh auto;
   border: 20px solid rgba(0,0,0,0.8);
@@ -135,8 +135,7 @@ a.button {
 
 @media all and (max-width:500px) {
   .app-wrap {
-    height:100vh;
-    height: calc(var(--vh, 1vh) * 100);
+    height: var(--vh);
     margin:0px;
     border:0px;
     border-bottom-width: 0px;
