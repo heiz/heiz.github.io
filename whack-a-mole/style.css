@@ -12,6 +12,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Noto Sans JP', sans-serif;
+  overflow: hidden;
 }
 
 h1 {
@@ -75,14 +76,14 @@ button {
     width: 30%;
     text-align: center;
     display: block;
-    margin: 0.5em auto;
+    margin: 1.5em auto;
     font-family: 'Noto Sans JP', sans-serif;
     font-size: 2rem;
     border-bottom: 5px solid #03B291;
     cursor: pointer;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 650px) {
    h1 {
     font-size: 5rem;
     line-height:1.5;
@@ -95,5 +96,13 @@ button {
 
   button {
     width: 50%;
+    margin: 1em auto;
   }
+
 }
+
+
+
+
+
+
