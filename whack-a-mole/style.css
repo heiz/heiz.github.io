@@ -75,7 +75,7 @@ button {
   width: 30%;
   text-align:center;
   display:block;
-  margin: 2% auto;
+  margin: 0.5em auto;
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 2rem;
   border-bottom: 5px solid #F3C010;
@@ -91,5 +91,9 @@ button {
   .game {
       width: 80vw;
       height: 40vh;
+  }
+
+  button {
+    width: 50%;
   }
 }
