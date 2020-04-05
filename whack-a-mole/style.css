@@ -29,8 +29,8 @@ h1 {
 }
 
 .game {
-  width: 60vw;
-  height: 40vh;
+  width: 600px;
+  height: 400px;
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
