@@ -17,10 +17,16 @@ body {
 
 h1 {
   text-align: center;
-  font-size: 10rem;
+  font-size: 8rem;
   line-height: 1;
   margin-top: 5vh;
   margin-bottom: 0;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 1;
 }
 
 .score {
@@ -100,6 +106,7 @@ button {
    h1 {
     font-size: 3.5rem;
     line-height:1.5;
+    margin-top: 2vh;
   }
 
   .game {
@@ -109,7 +116,7 @@ button {
 
   button {
     width: 50%;
-    margin: 8vh auto;
+    margin: 5vh auto;
   }
 
 }
