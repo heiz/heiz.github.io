@@ -115,7 +115,6 @@
 
 
   moles.forEach(mole => mole.addEventListener('click', bonk));
-  moles.forEach(mole => mole.addEventListener('touchstart', bonk));
 
 
   window.addEventListener("scroll", (e)=>e.preventDefault());
