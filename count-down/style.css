@@ -83,6 +83,17 @@ body {
   color: white;
 }
 
+.cc {
+  width:100%;
+  text-align:center;
+  color:#ffff;
+  height: 5vh;
+}
+
+.cc a {
+  color:#ffff;
+}
+
 
 @media only screen and (max-width: 600px) {
 
