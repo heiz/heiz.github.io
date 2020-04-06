@@ -33,6 +33,15 @@
     <div class="hole hole6">
       <div class="mole"></div>
     </div>
+    <div class="hole hole7">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole8">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole9">
+      <div class="mole"></div>
+    </div>
   </div>
 
   <button onClick="startGame()">START</button>
@@ -64,12 +73,19 @@
   function peep() {
     const time = randomTime(200, 1000);
     const hole = randomHole(holes);
+
+    const timeTwo = randomTime(200, 1000);
+    const holeTwo = randomHole(holes);
+    
     hole.classList.add('up');
+    holeTwo.classList.add('up');
 
     setTimeout(()=> {
       hole.classList.remove('up');
+      holeTwo.classList.remove('up');
       if(!timeUp) peep();
     }, time)
+
     
   }
 
