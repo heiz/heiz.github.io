@@ -19,6 +19,8 @@ function timer(seconds){
 		//stop countdown when seconds left is 0 or negative
 		if (secondsLeft <= 0) {
 			clearInterval(countdown);
+			var audio = new Audio('analog-watch-alarm_daniel-simion.mp3');
+			audio.play();
 			return;
 		}
 		
