@@ -77,10 +77,11 @@ button {
     text-align: center;
     display: block;
     margin: 10vh auto;
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 2rem;
     border-bottom: 5px solid #03B291;
     cursor: pointer;
+    line-height: 2em;
 }
 
 @media only screen and (max-width: 650px) {
