@@ -11,7 +11,7 @@ html {
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   overflow: hidden;
 }
 
@@ -19,6 +19,7 @@ h1 {
   text-align: center;
   font-size: 10rem;
   line-height: 1;
+  margin-top: 5vh;
   margin-bottom: 0;
 }
 
@@ -84,6 +85,17 @@ button {
     line-height: 2em;
 }
 
+.cc {
+  width:100%;
+  text-align:center;
+  color:grey;
+  height: 5vh;
+}
+
+.cc a {
+  color:grey;
+}
+
 @media only screen and (max-width: 650px) {
    h1 {
     font-size: 3.5rem;
@@ -97,6 +109,7 @@ button {
 
   button {
     width: 50%;
+    margin: 8vh auto;
   }
 
 }
