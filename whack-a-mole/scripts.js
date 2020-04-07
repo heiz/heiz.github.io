@@ -2,8 +2,10 @@
   const scoreBoard = document.querySelector('.score');
   const moles = document.querySelectorAll('.mole');
   const startButton = document.querySelector('#startButton');
+  const audio = document.querySelector('audio[data-key="71"]');
   let lastHole;
   let timeUp = false;
+  let isTouch = false;
   let score = 0;
 
   function randomTime(min, max) {
@@ -80,9 +82,9 @@
   //start game
   function startGame() {
     // bg music
-    // const audio = document.querySelector('audio[data-key="bg"]');
-    // audio.currentTime = 0;
-    // audio.play();
+    // const bgmuisc = document.querySelector('audio[data-key="bg"]');
+    // bgmuisc.currentTime = 0;
+    // bgmuisc.play();
     startButton.style.display = "none";
 
     score = 0;
@@ -103,10 +105,11 @@
 
   function bonk(e) {
     console.log(e)
+
+
     if(!e.isTrusted) return; //stop cheat
     score++
     
-    const audio = document.querySelector('audio[data-key="71"]');
     console.time();
     audio.currentTime = 0;
     audio.play();
@@ -114,10 +117,15 @@
 
     this.classList.remove('up');
     scoreBoard.textContent = score;
+
+    if(e.type === 'touchstart') { //stop double fire
+      e.stopPropagation();
+      e.preventDefault();
+    } 
   }
 
 
-  moles.forEach(mole => mole.addEventListener('mouseover', bonk));
+  moles.forEach(mole => mole.addEventListener('click', bonk));
   moles.forEach(mole => mole.addEventListener('touchstart', bonk));
 
 
