@@ -102,19 +102,23 @@
   }
 
   function bonk(e) {
+    console.log(e)
     if(!e.isTrusted) return; //stop cheat
     score++
     
     const audio = document.querySelector('audio[data-key="71"]');
+    console.time();
     audio.currentTime = 0;
     audio.play();
+    console.timeEnd();
 
     this.classList.remove('up');
     scoreBoard.textContent = score;
   }
 
 
-  moles.forEach(mole => mole.addEventListener('click', bonk));
+  moles.forEach(mole => mole.addEventListener('mouseover ', bonk));
+  moles.forEach(mole => mole.addEventListener('touchstart', bonk));
 
 
   window.addEventListener("scroll", (e)=>e.preventDefault());
