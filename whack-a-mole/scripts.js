@@ -117,9 +117,12 @@
   }
 
 
-  moles.forEach(mole => mole.addEventListener('mouseover ', bonk));
+  moles.forEach(mole => mole.addEventListener('mouseover', bonk));
   moles.forEach(mole => mole.addEventListener('touchstart', bonk));
 
 
   window.addEventListener("scroll", (e)=>e.preventDefault());
-  window.addEventListener("touchmove", (e)=>e.preventDefault());
+  window.addEventListener("touchmove", function(e){
+    e.stopPropagation();
+    e.preventDefault();
+  })
