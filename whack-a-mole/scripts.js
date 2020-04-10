@@ -105,9 +105,8 @@
   function bonk(e) {
     console.log(e)
 
-
     if(!e.isTrusted) return; //stop cheat
-    playSound ()
+    playSound();
     score++
     this.classList.remove('up');
     scoreBoard.textContent = score;
