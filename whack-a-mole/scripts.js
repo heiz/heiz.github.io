@@ -2,7 +2,6 @@
   const scoreBoard = document.querySelector('.score');
   const moles = document.querySelectorAll('.mole');
   const startButton = document.querySelector('#startButton');
-  const audio = document.querySelector('audio[data-key="71"]');
   let lastHole;
   let timeUp = false;
   let isTouch = false;
@@ -108,13 +107,8 @@
 
 
     if(!e.isTrusted) return; //stop cheat
+    playSound ()
     score++
-    
-    console.time();
-    audio.currentTime = 0;
-    audio.play();
-    console.timeEnd();
-
     this.classList.remove('up');
     scoreBoard.textContent = score;
 

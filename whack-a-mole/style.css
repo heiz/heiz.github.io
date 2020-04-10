@@ -53,7 +53,7 @@ h2 {
 
 .hole:after {
   display: block;
-  background: url(method-draw-bottom.svg) bottom center no-repeat;
+  background: url('assets/method-draw-bottom.svg') bottom center no-repeat;
   background-size: contain;
   content: '';
   width: 100%;
@@ -65,7 +65,7 @@ h2 {
 
 .hole:before {
   display: block;
-  background: url(method-draw-top.svg) bottom center no-repeat;
+  background: url('assets/method-draw-top.svg') bottom center no-repeat;
   background-size: contain;
   content: '';
   width: 100%;
@@ -76,7 +76,7 @@ h2 {
 }
 
 .mole {
-  background: url('mole.svg') bottom center no-repeat;
+  background: url('assets/mole.svg') bottom center no-repeat;
   background-size: 60%;
   position: absolute;
   top: 100%;

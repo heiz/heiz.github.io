@@ -6,8 +6,17 @@
   <title>Whack A Mole!</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="https://code.createjs.com/1.0.0/soundjs.min.js"></script>
+  <script>
+    function loadSound () {
+        createjs.Sound.registerSound("assets/boom.wav", "bonkSound");
+      }
+    function playSound () {
+        createjs.Sound.play("bonkSound");
+      }
+  </script>
 </head>
-<body>
+<body onload="loadSound();">
   <h1>Whack A Mole!</h1>
   <h2>Timer: <span class="timer">30</span>s -- <span class="score">0</span></h2>
 
@@ -47,8 +56,6 @@
   <!--<div class="cc">"<a rel="nofollow" href="https://freemusicarchive.org/music/Orthotonics/Luminous_Bipeds_1343/10_Whack-a-Mole">Whack-a-Mole </a>" by <a rel="nofollow" href="https://freemusicarchive.org/music/Orthotonics/">Orthotonics</a> is licensed under <a rel="nofollow" href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/">CC BY 3.0</a>
   </div>--> 
 
-  <audio data-key="71" src="boom.wav"></audio> 
-  <!--<audio data-key="bg" src="Orthotonics_-_10_-_Whack-a-Mole.mp3"></audio>-->
   <script src="scripts.js"></script>
 </body>
 </html>
