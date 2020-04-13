@@ -124,12 +124,12 @@ button {
 
   .game {
       width: 70vw;
-      height: 60vh;
+      height: 55vh;
   }
 
   button {
     width: 50%;
-    margin: 7vh auto;
+    margin: 5vh auto;
   }
 
 }
@@ -143,7 +143,7 @@ button {
 
   .game {
       width: 60vw;
-      height: 57vh;
+      height: 55vh;
   }
 
   button {
